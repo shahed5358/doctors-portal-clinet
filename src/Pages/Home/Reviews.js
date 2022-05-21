@@ -12,22 +12,25 @@ const Reviews = () => {
       name: "Winson Herry",
       description: "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
       img: people1,
+      location: 'california'
     },
     {
       _id: 2,
       name: "Winson Herry",
       description: "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
       img: people2,
+      location: 'california'
     },
     {
       _id: 3,
       name: "Winson Herry",
       description: "It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content",
       img: people3,
+      location: 'california'
     },
   ];
   return (
-    <div className="pt-12">
+    <div className="my-20">
       <div className="flex justify-between">
         <div>
           <h4 className="text-xl text-secondary font-bold">Testimonial</h4>
@@ -39,7 +42,8 @@ const Reviews = () => {
       </div>
       <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {reviews.map((review) => (
-          <Review key={review.id} review={review}></Review>
+          <Review key={review._id} 
+          review={review}></Review>
         ))}
       </div>
     </div>
