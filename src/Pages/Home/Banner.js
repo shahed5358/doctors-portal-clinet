@@ -1,20 +1,21 @@
 import React from "react";
 import chair from '../../assets/images/chair.png'
+import PrimaryButton from "../Shared/PrimaryButton";
 
 const Banner = () => {
   return (
-    <div class="hero min-h-screen bg-[url('/src/assets/images/bg.png')]">
-      <div class="hero-content flex-col lg:flex-row-reverse">
+    <div className="hero min-h-screen bg-[url('/src/assets/images/bg.png')]">
+      <div className="hero-content flex-col lg:flex-row-reverse">
         <img
           src={chair}
-          class="max-w-sm rounded-lg shadow-2xl"
+          className="max-w-sm rounded-lg shadow-2xl"
         />
         <div>
-          <h1 class="text-5xl font-bold">Your New Smile Starts Here!</h1>
-          <p class="py-6">
+          <h1 className="text-5xl font-bold">Your New Smile Starts Here!</h1>
+          <p className="py-6">
             Your New Smile Starts Here.Your New Smile Starts Here.Your New Smile Starts Here.Your New Smile Starts Here.Your New Smile Starts Here.Your New Smile Starts Here.
           </p>
-          <button class="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary">Get Started</button>
+          <PrimaryButton>Get Started</PrimaryButton>
         </div>
       </div>
     </div>
