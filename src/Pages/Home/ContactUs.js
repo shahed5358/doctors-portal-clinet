@@ -5,7 +5,7 @@ import PrimaryButton from "../Shared/PrimaryButton";
 const ContactUs = () => {
   return (
     <section style={{ background: `url(${appointment})` }}>
-      <div className="text-center">
+      <div className="text-center py-12">
         <p className=" font-bold text-secondary">Contact Us</p>
         <h1 className="text-3xl text-white">Stay Connected With Us</h1>
         <div className="inline-block">
