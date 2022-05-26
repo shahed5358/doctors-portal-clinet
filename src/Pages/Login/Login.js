@@ -3,19 +3,22 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-fireba
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {register,formState: { errors },handleSubmit} = useForm();
   const [
     signInWithEmailAndPassword,user, loading, error] = useSignInWithEmailAndPassword(auth);
-    const navigate = useNavigate();
+    
 
     let signInError;
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
   if ( user || gUser) {
-    console.log(user);
+  navigate(from, {replace: true});
   }
 
   if( loading || gLoading) {
@@ -29,7 +32,6 @@ const Login = () => {
   const onSubmit = (data) => {
     console.log(data);
     signInWithEmailAndPassword(data.email, data.password);
-    navigate('/appointment');
   };
 
   return (
