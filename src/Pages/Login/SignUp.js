@@ -1,7 +1,7 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
@@ -9,30 +9,31 @@ const SignUp = () => {
 
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const {register,formState: { errors },handleSubmit} = useForm();
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword,user,loading,error,] = useCreateUserWithEmailAndPassword(auth);
+
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    const navigate = useNavigate();
   
-      let signInError;
+      let signInError;  
   
-    if ( user || gUser) {
-      console.log(user);
-    }
-  
-    if( loading || gLoading) {
+    if( loading || gLoading || updating) {
       return <Loading></Loading>
     }
   
-    if(error || gError) {
-      signInError = <p className="text-red-500"><small>{error?.message || gError?.message}</small></p>
+    if(error || gError || updateError) {
+      signInError = <p className="text-red-500"><small>{error?.message || gError?.message || updateError?.me}</small></p>
+    }
+
+    if(user || gUser){
+        console.log(user || gUser);
     }
   
-    const onSubmit = (data) => {
-      console.log(data);
-      createUserWithEmailAndPassword(data.email, data.password);
+    const onSubmit = async data => {
+      await createUserWithEmailAndPassword(data.email, data.password);
+      await updateProfile({ displayName: data.name});
+      console.log('update done');
+      navigate('/appointment');
     };
 
     return (
