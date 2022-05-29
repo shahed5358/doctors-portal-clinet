@@ -6,7 +6,6 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import RequireAuth from "./Pages/Login/RequireAuth";
 import SignUp from "./Pages/Login/SignUp";
-import ContactUs from "./Pages/Home/ContactUs"
 import Navbar from './Pages/Shared/Navbar';
 
 function App() {
